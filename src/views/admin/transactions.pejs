@@ -1,0 +1,104 @@
+<%{ './layouts/head' { title: "Lịch sử phiên" } }%>
+<%{ "./layouts/nav" }%>
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../navigation/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Admin</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Bảng điều khiển</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h2 class="mb-0">Dashboard</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+
+        <!-- [ Main Content ] start -->
+
+        <div class="row">
+            <!-- [ sample-page ] start -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body py-0">
+                        <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="profile-tab-1" data-bs-toggle="tab" href="#profile-1"
+                                   role="tab" aria-selected="true">
+                                    <i class="ti ti-user me-2"></i>Lịch sử phiên
+                                </a>
+                            </li>
+
+                            <!--                <li class="nav-item" role="presentation">-->
+                            <!--                  <a class="nav-link" id="profile-tab-3" data-bs-toggle="tab" href="#profile-3" role="tab" aria-selected="false" tabindex="-1">-->
+                            <!--                    <i class="ti ti-id me-2"></i>Cấu hình-->
+                            <!--                  </a>-->
+                            <!--                </li>-->
+                            <!--                <li class="nav-item" role="presentation">-->
+                            <!--                  <a class="nav-link" id="profile-tab-4" data-bs-toggle="tab" href="#profile-4" role="tab" aria-selected="false" tabindex="-1">-->
+                            <!--                    <i class="ti ti-lock me-2"></i>Đổi mật khẩu-->
+                            <!--                  </a>-->
+                            <!--                </li>-->
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card table-card">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                        <h5>Lịch sử phiên</h5>
+                                        <a href="#" class="link-primary">View all</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-borderless mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Loại</th>
+                                                    <th>Date</th>
+                                                    <th>Trạng thái</th>
+                                                    <th class="text-end">Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <% getLatest?.forEach((data) => { %>
+                                                    <tr>
+                                                        <td><%= data?.shortId %></td>
+                                                        <td><% if (!data?.auto) { %>Thủ công<% } else { %>Tự động<% } %></td>
+                                                        <td><%- new Date(data?.createdAt).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }) %></td>
+                                                        <td><%- data?.status %></td>
+                                                        <td class="text-end"><label class="badge bg-light-<% if (data?.result === "up") { %>success<% } else if (data?.result === "down") { %>danger<% } else if (data?.result === "sideway") { %>warning<% } else { %>info<% } %>"><% if (data?.result === "up") { %>Tăng<% } else if (data?.result === "down") { %>Giảm<% } else if (data?.result === "sideway") { %>Bỏ qua<% } else { %>Chưa đặt<% } %></label></td>
+                                                    </tr>
+                                                <% }) %>
+                                                
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ sample-page ] end -->
+                            </div>
+
+
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                    <%{ "./layouts/foot" }%>

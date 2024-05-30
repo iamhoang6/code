@@ -1,0 +1,58 @@
+<%{ '../layouts/head' { title: "Xác thực email" } }%>
+
+<!-- [Body] Start -->
+
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+  
+  <body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+      <div class="loader-track">
+        <div class="loader-fill"></div>
+      </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+  
+    <div class="auth-main">
+      <div class="auth-wrapper v1">
+        <div class="auth-form">
+          <div class="card my-5">
+            <div class="card-body">
+              <div class="mb-4">
+  <!--              <a href="#"><img src="assets/images/logo-dark.svg" class="mb-4 img-fluid" alt="img"></a>-->
+                <h3 class="mb-2"><b>Xác thức Email</b></h3>
+                <p class="text-muted mb-4">Vui lòng nhập mã xác thực để kích hoạt tài khoản.</p>
+                <p class="">Chúng tôi đã gửi mã xác thực tới ****@<%- profile?.email?.split("@")[1] %></p>
+              </div>
+              <form class="form_autoSmit" redirect="/home" action="/auth/verify-email" delay="1000" method="POST" btnMsg="Tiếp tục" alertSuccess="no">
+                <div class="my-4 text-center">
+                  <input type="number" name="otp" class="form-control text-center">
+                </div>
+                <div class="d-grid mt-4">
+                  <button type="submit" class="btn btn-primary form_smit_btn">Tiếp tục</button>
+                </div>
+                <div class="d-flex justify-content-start align-items-end mt-3">
+                  <p class="mb-0">Bạn chưa nhận được email?</p>
+                  <a href="/auth/resend-mail" class="link-primary ms-2">Gửi lại mã</a>
+                  <a href="/auth/logout" class="link-primary ms-2">Đăng xuất</a>
+                </div>
+              </form> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+    <%{ "../layouts/foot" }%>

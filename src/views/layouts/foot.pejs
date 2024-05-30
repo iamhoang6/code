@@ -1,0 +1,45 @@
+<!-- [ Main Content ] end -->
+<% if (typeof profile !== "undefined") { %>
+  <footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+        <div class="row">
+            <div class="col my-1">
+                <p class="m-0"
+                >BiMatTrieuDo &#9829; </p
+                >
+            </div>
+            <div class="col-auto my-1">
+
+            </div>
+        </div>
+    </div>
+  </footer>
+<% } %>
+<!-- Required Js -->
+<script src="/assets/js/plugins/sweetalert2.all.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/assets/js/plugins/popper.min.js"></script>
+<script src="/assets/js/plugins/simplebar.min.js"></script>
+<script src="/assets/js/plugins/bootstrap.min.js"></script>
+<script src="/assets/js/fonts/custom-font.js"></script>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/pcoded.js"></script>
+<script src="/assets/js/plugins/feather.min.js"></script>
+<script src="/assets/js/plugins/simple-datatables.js"></script>
+<script src="/assets/js/main.js"></script>
+
+<script src="../assets/js/plugins/dataTables.min.js"></script>
+<script src="../assets/js/plugins/dataTables.bootstrap5.min.js"></script>
+<script src="../assets/js/plugins/dataTables.autoFill.min.js"></script>
+<script src="../assets/js/plugins/autoFill.bootstrap5.min.js"></script>
+<script src="../assets/js/plugins/dataTables.keyTable.min.js"></script>
+<script src="../assets/js/plugins/keyTable.bootstrap5.min.js"></script>
+<script src="../assets/js/plugins/dataTables.select.min.js"></script>
+
+<%{{ js }}%>
+
+</body>
+<!-- [Body] end -->
+
+
+</html>

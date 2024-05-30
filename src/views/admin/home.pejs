@@ -1,0 +1,290 @@
+<%{ './layouts/head' { title: "Trang chủ" } }%>
+<%{ "./layouts/nav" }%>
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../navigation/index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Admin</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Bảng điều khiển</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h2 class="mb-0">Dashboard</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+
+        <!-- [ Main Content ] start -->
+
+        <div class="row">
+            <!-- [ sample-page ] start -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body py-0">
+                        <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="profile-tab-1" data-bs-toggle="tab" href="#profile-1"
+                                    role="tab" aria-selected="true">
+                                    <i class="ti ti-user me-2"></i>Bảng lệnh
+                                </a>
+                            </li>
+
+                            
+                            <!--                <li class="nav-item" role="presentation">-->
+                            <!--                  <a class="nav-link" id="profile-tab-4" data-bs-toggle="tab" href="#profile-4" role="tab" aria-selected="false" tabindex="-1">-->
+                            <!--                    <i class="ti ti-lock me-2"></i>Đổi mật khẩu-->
+                            <!--                  </a>-->
+                            <!--                </li>-->
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
+                        <div class="row">
+                            <div class="col-lg-4 col-xxl-3">
+                                <div class="card">
+                                    <div class="card-body position-relative">
+
+                                        <div class="text-center mt-3">
+
+                                            <h5 class="mb-0">Phiên sắp tới <%- checkLatest?.shortId %></h5>
+
+                                            <% if (checkLatest?.result === "up") { %>
+
+                                            <button class="btn btn-primary"
+                                                style="margin-top: 20px; margin-bottom: 15px">Xu hướng Tăng
+                                            </button>
+
+                                            <% } else if (checkLatest?.result === "down") { %>
+
+                                            <button class="btn btn-danger"
+                                                style="margin-top: 20px; margin-bottom: 15px">Xu hướng Giảm
+                                            </button>
+
+                                            <% } else if (checkLatest?.result === "sideway") { %>
+
+                                            <button class="btn btn-warning"
+                                                style="margin-top: 20px; margin-bottom: 15px">Bỏ qua
+                                            </button>
+
+                                            <% } %>
+
+                                            <p class="text-muted text-sm">Sử dụng bảng dưới để thay đổi phiên tiếp
+                                                theo</p>
+                                            <hr class="my-3 border border-secondary-subtle">
+
+                                            <!--                        <hr class="my-3 border border-secondary-subtle">-->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button class="btn btn-primary my-2 w-full"
+                                                        onclick="setNextTransaction('up')">
+                                                        <i data-feather="trending-up"></i>
+                                                        Tăng
+                                                    </button>
+
+                                                </div>
+                                                <div class="col-12">
+
+                                                    <button class="btn btn-danger my-2 w-full"
+                                                        onclick="setNextTransaction('down')"><i
+                                                            data-feather="trending-down"></i> Giảm
+                                                    </button>
+                                                </div>
+                                                <div class="col-12">
+
+                                                    <button class="btn btn-warning my-2 w-full"
+                                                        onclick="setNextTransaction('sideway')"><i
+                                                            data-feather="trash"></i> Bỏ qua
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <hr class="my-3 border border-secondary-subtle">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-8 col-xxl-9">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Điều khiển phiên</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+
+                                            <form class="form_autoSmit" action="/admin/setting" method="POST" redirect=""
+                                                btnMsg="Cập nhật" delay="1000">
+
+                                                    <li class="list-group-item px-0 pt-0">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <p class="mb-1 text-muted">Phương thức lệnh</p>
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+
+                                                                        <select class="mb-3 form-select" name="auto">
+                                                                            <option <% if (setting?.auto) { %>selected<% } %> value="Có">Auto</option>
+                                                                            <option <% if (!setting?.auto) { %>selected<% } %> value="Không">Bot Telegram</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">TIÊU ĐỀ LANDING PAGE <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="text" name="title" class="form-control" value="<%- setting?.title %>">
+                                                                    <!--                            <small class="form-text text-muted">Your Profile URL:-->
+                                                                    <!--                              https://pc.com/Ashoka_Tano_16</small>-->
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Thời gian mỗi phiên <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="number" name="timePerRound" class="form-control" value="<%- setting?.timePerRound %>">
+                                                                    <!--                            <small class="form-text text-muted">Your Profile URL:-->
+                                                                    <!--                              https://pc.com/Ashoka_Tano_16</small>-->
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                            
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item px-0">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <button class="btn btn-info my-2 w-full form_smit_btn" type="submit"><i
+                                                                        data-feather="edit"></i> Cập nhật
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                            </form>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="profile-3" role="tabpanel" aria-labelledby="profile-tab-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Cấu hình chung</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">TIÊU ĐỀ LANDING PAGE <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" value="Ashoka_Tano_16">
+                                                    <!--                            <small class="form-text text-muted">Your Profile URL:-->
+                                                    <!--                              https://pc.com/Ashoka_Tano_16</small>-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-end">
+                                <!--                  <button class="btn btn-outline-dark ms-2">Clear</button>-->
+                                <button class="btn btn-primary">Cập nhật thông tin</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- [ sample-page ] end -->
+        </div>
+
+
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+
+<%{ "./layouts/foot" }%>
+<%{ js %>
+
+<script>
+    function setNextTransaction(result) {
+        fetch(`/admin/setNextTransaction/${result}`)
+            .then(response => response.json())
+            .then(data => {
+                // Check if the response is a JSON object
+                if (typeof data === 'object' && data !== null) {
+                    // Display SweetAlert based on the success property in the JSON
+                    if (data.success === true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công!',
+                            text: data.message,
+                        });
+
+                        setTimeout(() => {
+                                        location.reload();
+                                    }, 2000)
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Thất bại!',
+                            text: data.message,
+                        });
+                    }
+                } else {
+                    // If the response is not JSON, display an error message
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'error.',
+                    });
+                }
+            })
+            .catch(error => {
+                // Handle fetch errors
+                console.error('Error in fetch:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error in action. Please try again later.',
+                });
+            });
+    }
+</script>
+
+<%} %>

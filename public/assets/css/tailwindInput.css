@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Varta:wght@300..700&display=swap');
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-weight: 400;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-Regular_3.otf") format("opentype");
+}
+
+/*@font-face {*/
+/*    font-family: "AvertaStdCY";*/
+/*    font-weight: 500;*/
+/*    src: url("assets/fonts/Intelligent Design - AvertaStdCY-Medium_1.otf") format("opentype");*/
+/*}*/
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-weight: 600;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-SemiBold_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-weight: 700;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-Bold_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-weight: 800;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-ExtraBold_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-style: italic;
+    font-weight: 400;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-RegularItalic_1.otf") format("opentype");
+}
+
+/*@font-face {*/
+/*    font-family: "AvertaStdCY";*/
+/*    font-style: italic;*/
+/*    font-weight: 500;*/
+/*    src: url("assets/fonts/Intelligent Design - AvertaStdCY-MediumItalic_1.otf") format("opentype");*/
+/*}*/
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-style: italic;
+    font-weight: 600;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-SemiBoldItalic_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-style: italic;
+    font-weight: 700;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-BoldItalic_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "AvertaStdCY";
+    font-style: italic;
+    font-weight: 800;
+    src: url("assets/fonts/Intelligent Design - AvertaStdCY-ExtraBoldItalic_1.otf") format("opentype");
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-family: "AvertaStdCY", sans-serif;
+    color: #FFFFFF;
+}
+
+.liner-gradient-text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
