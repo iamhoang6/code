@@ -97,8 +97,8 @@ async function createNew () {
             result: (setting?.auto) ? randomResult : "",
             auto: setting?.auto,
             status: "pending",
-            dateStart: moment().startOf('minute').add((setting?.timePerRound) + 18, "seconds"),
-            dateEnd: moment().startOf('minute').add((setting?.timePerRound * 2)  + 18, "seconds"),
+            dateStart: moment().startOf('minute').add((setting?.timePerRound) + 8, "seconds"),
+            dateEnd: moment().startOf('minute').add((setting?.timePerRound * 2)  + 8, "seconds"),
         })
 
         if (!setting?.auto) {
