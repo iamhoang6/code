@@ -31,7 +31,7 @@
             <div class="card-body">
               <div class="mb-4">
   <!--              <a href="#"><img src="assets/images/logo-dark.svg" class="mb-4 img-fluid" alt="img"></a>-->
-                <h3 class="mb-2"><b>Xác thức Email</b></h3>
+                <h3 class="mb-2"><b>Xác thực Email</b></h3>
                 <p class="text-muted mb-4">Vui lòng nhập mã xác thực để kích hoạt tài khoản.</p>
                 <p class="">Chúng tôi đã gửi mã xác thực tới ****@<%- profile?.email?.split("@")[1] %></p>
               </div>
