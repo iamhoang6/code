@@ -12,7 +12,7 @@
             <div class="m-header">
                 <a href="#" class="b-brand text-primary">
                     <!-- ========   Change your logo from here   ============ -->
-                    <img src="/assets/images/iamhoang2.webp"/>
+                    <img src="/assets/images/logo-dark.svg"/>
                     <span class="badge bg-light-success rounded-pill ms-2 theme-version"></span>
                 </a>
             </div>
@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0">
-                                <img src="/assets/images/user/logovuong.webp" alt="user-image"
+                                <img src="/assets/images/user/avatar-1.jpg" alt="user-image"
                                      class="user-avtar wid-45 rounded-circle"/>
                             </div>
                             <div class="flex-grow-1 ms-3 me-2">
