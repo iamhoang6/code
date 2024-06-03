@@ -61,7 +61,7 @@
        <div
                 id="increaseTrend"
                 class="relative m-0 w-screen h-screen"
-                style="background-image: url(/assets/images/background/blue3.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
+                style="background-image: url(/assets/images/background/blue4.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
         >
             <div class="container mx-auto px-2 md:px-4 h-full">
                 <div class="flex flex-row justify-center items-center relative h-full w-full">
@@ -104,7 +104,7 @@
         <div
                 id="decreaseTrend"
                 class="relative m-0 w-screen h-screen hide"
-                style="background-image: url(/assets/images/background/blue3.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
+                style="background-image: url(/assets/images/background/red4.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
         >
             <div class="container mx-auto px-2 md:px-4 h-full">
                 <div class="flex flex-row justify-center items-center relative h-full w-full">
@@ -162,7 +162,7 @@
         <div
                 id="ignoreTrend"
                 class="relative m-0 w-screen h-screen"
-                style="background-image: url(/assets/images/background/blue3.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
+                style="background-image: url(/assets/images/background/yellow4.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
         >
             <div class="container mx-auto px-2 md:px-4 h-full">
                 <div class="flex flex-row justify-center items-center relative h-full w-full">
