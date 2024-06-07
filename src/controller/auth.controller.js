@@ -149,8 +149,8 @@ const authController = {
                 _id: res.locals.profile._id
             }, {
                 isEmailVerified: true,
-                status: "freeTrial",
-                dateEnd: moment().add(1, 'days').toDate()
+                status: "freetrial",
+                dateEnd: moment().toDate()
             })
     
 
