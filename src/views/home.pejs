@@ -329,6 +329,7 @@
                         // Alert message from JSON if success is not true
                         alert(response.result);
                         contactTele.show();
+                        loadingScreenElement.hide()
                     }
                 }).fail(function() {
                     console.error("Failed to fetch data from /api/getCurrent");
