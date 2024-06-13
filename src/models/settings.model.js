@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 const settingSchema = new mongoose.Schema({
     auto: Boolean,
     title: String,
-    timePerRound: Number
+    timePerRound: Number,
+    timeAdd: Number
 }, { timestamps: true })
 
 

@@ -168,6 +168,15 @@
                                                                 </div>
                                                             </div>
 
+<div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Thời gian cộng thêm <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="number" name="timeAdd" class="form-control" value="<%- setting?.timeAdd %>">
+                                                                    <!--                            <small class="form-text text-muted">Your Profile URL:-->
+                                                                    <!--                              https://pc.com/Ashoka_Tano_16</small>-->
+                                                                </div>
+                                                            </div>
                                                             
                                                             
                                                         </div>
