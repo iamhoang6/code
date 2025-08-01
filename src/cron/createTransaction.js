@@ -89,13 +89,13 @@ async function createNew() {
             } else {
                 // First ever run. Schedule the first transaction to start safely in the future.
                 // This avoids the startOf('minute') bug entirely.
-                newDateStart = moment().startOf('minute').add(timeAdd, 'seconds'); // Start in 5 seconds
+                newDateStart = moment().startOf('minute').add(timeAdd + 60, 'seconds'); // Start in 5 seconds
             }
             
             // CATCH-UP: If server was off, the calculated start time might be in the past.
             // If so, reschedule it to start safely in the future to prevent an instant loop.
             if (newDateStart.isBefore(moment())) {
-                 newDateStart = moment().startOf('minute').add(timeAdd, 'seconds');
+                 newDateStart = moment().startOf('minute').add(timeAdd + 60, 'seconds');
             }
 
             // We use the original logic for dateEnd relative to the NEW dateStart
