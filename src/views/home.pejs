@@ -245,7 +245,7 @@
         </div>
 
 
-<!-- <script>
+<script>
         $(document).ready(function() {
             // Select elements by their IDs and store them in variables
             var getOrderElement = $('#getOrder');
@@ -337,92 +337,8 @@
         
             
         });
-        </script> -->
-         
-
-        <script>
-            $(document).ready(function() {
-                // Select elements by their IDs and store them in variables
-                var getOrderElement = $('#getOrder');
-                var contactTele = $('#contactTele');
-                var increaseTrendElement = $('#increaseTrend');
-                var decreaseTrendElement = $('#decreaseTrend');
-                var ignoreTrendElement = $('#ignoreTrend');
-                var loadingScreenElement = $('#loadingScreen');
-        
-                function start() {
-                    // Hide all dynamic elements and show the loading screen for a clean state
-                    getOrderElement.hide();
-                    increaseTrendElement.hide();
-                    decreaseTrendElement.hide();
-                    ignoreTrendElement.hide();
-                    contactTele.hide();
-                    loadingScreenElement.show();
-        
-                    // --- OPTIMIZATION ---
-                    // We start the API request and a 5-second timer at the same time.
-                    // The UI will update after the API call is complete AND at least 5 seconds have passed.
-                    // This is more efficient than waiting for the API and then waiting an additional 5 seconds.
-        
-                    const apiRequest = $.get("/api/getCurrent");
-                    // This promise ensures a minimum wait time of 5 seconds (fulfilling the 3000ms + 2000ms idea)
-                    const timerPromise = new Promise(resolve => setTimeout(resolve, 5000));
-        
-                    // Promise.all waits for both the API request and the timer to complete
-                    Promise.all([apiRequest, timerPromise]).then(function(results) {
-                        const response = results[0]; // Get the API response from the results array
-                        
-                        loadingScreenElement.hide();
-        
-                        if (response.success) {
-                            var trend = response.result.toLowerCase();
-                            if (trend === "up") {
-                                increaseTrendElement.show();
-                            } else if (trend === "down") {
-                                decreaseTrendElement.show();
-                            } else if (trend === "sideway") {
-                                ignoreTrendElement.show();
-                            } else {
-                                console.log("Unknown trend:", trend);
-                            }
-        
-                            // Display time difference if available
-                            if (response.timeDiff) {
-                                var timeRemaining = response.timeDiff; // Time difference in seconds
-        
-                                // Update the UI with initial time remaining
-                                $(".timeDiff").text("Số liệu sẽ được làm mới sau: " + timeRemaining + "s");
-        
-                                // Create a countdown timer
-                                var countdown = setInterval(function() {
-                                    timeRemaining--;
-                                    $(".timeDiff").text("Số liệu sẽ được làm mới sau: " + timeRemaining + "s");
-        
-                                    if (timeRemaining <= 0) {
-                                        clearInterval(countdown); // Stop the countdown
-                                        // After countdown finishes, call start() again after 2000ms
-                                        setTimeout(function() {
-                                            start();
-                                        }, 2000);
-                                    }
-                                }, 1000); // Update timer every second (1000ms)
-                            }
-                        } else {
-                            // Alert message from JSON if success is not true
-                            alert(response.result);
-                            contactTele.show();
-                        }
-                    }).catch(function() {
-                        // This block runs if the $.get request itself fails (e.g., network error)
-                        loadingScreenElement.hide();
-                        console.error("Failed to fetch data from /api/getCurrent");
-                        contactTele.show(); // Show contact info on failure
-                    });
-                }
-        
-                $("#startBtn").on("click", start);
-            });
         </script>
+         
         
 </body>
 </html>
