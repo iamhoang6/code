@@ -92,7 +92,7 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    <img src="/assets/images/smartlogo(1).png" alt="Logo" width="140" height="32">
+                    <img src="public/assets/images/smartlogo(1).png" alt="Logo" width="140" height="32">
                         </img>
 
                 </div>
