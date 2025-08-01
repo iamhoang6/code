@@ -81,6 +81,7 @@ async function createNew() {
             let newDateStart;
             const timePerRound = setting.timePerRound || 30;
             const timeAdd = setting.timeAdd || 0;
+            
 
             if (lastTransaction) {
                 // Base the next start time on the previous transaction's start time.
