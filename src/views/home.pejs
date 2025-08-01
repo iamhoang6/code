@@ -118,7 +118,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M108.688 191L54.3439 151.111L0 191V153.889L54.3439 114L108.688 153.889V191Z" fill="#01B58C"/>
                         </svg>
 
-                        <span class="text-2xl md:text-4xl font-bold rounded-3xl liner-gradient-text border-[#1FE3E2] border-[2px] px-16 md:px-24 py-14" style="background-image: -webkit-linear-gradient(180deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%); padding-bottom: 20px; padding-top: 20px">TĂNG 80%</span>
+                        <span class="text-2xl md:text-4xl font-bold rounded-3xl liner-gradient-text border-[#1FE3E2] border-[2px] px-16 md:px-24 py-14" style="background-image: -webkit-linear-gradient(180deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%); padding-bottom: 20px; padding-top: 20px">TĂNG <span class="randPercent"></span>%</span>
 
                         <span class="timeDiff text-white text-sm mt-5">Số liệu sẽ được làm mới sau: 20s</span>
 
@@ -177,7 +177,7 @@
                         </svg>
 
 
-                        <span class="text-2xl md:text-4xl font-bold rounded-3xl liner-gradient-text border-[#FA2843] border-gradient-danger border-[2px] px-16 md:px-24 py-14" style="background-image: -webkit-linear-gradient(180deg, #FA2843 0%, #FF8393 52.5%, #FA2843 100%); padding-bottom: 20px; padding-top: 20px">GIẢM 80%</span>
+                        <span class="text-2xl md:text-4xl font-bold rounded-3xl liner-gradient-text border-[#FA2843] border-gradient-danger border-[2px] px-16 md:px-24 py-14" style="background-image: -webkit-linear-gradient(180deg, #FA2843 0%, #FF8393 52.5%, #FA2843 100%); padding-bottom: 20px; padding-top: 20px">GIẢM <span class="randPercent"></span>%</span>
 
                         <span class="timeDiff text-white text-sm mt-5">Số liệu sẽ được làm mới sau: 20s</span>
 
@@ -316,6 +316,8 @@
                                 }
                             }, 1000); // Update timer every second (1000ms)
                         }
+
+                        $(".randPercent").html(Math.floor(Math.random() * (80 - 60 + 1)) + 60)
 
                     } else {
                         // Alert message from JSON if success is not true
