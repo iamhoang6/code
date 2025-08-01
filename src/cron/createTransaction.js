@@ -10,7 +10,6 @@ const GROUP_ID = process.env.TELE_GROUP_ID;
 
 // --- Bot actions remain unchanged ---
 
-// Define the action for the first button
 bot.action('action_one', async (ctx) => {
     let checkLatest = await transactionModel.findOne({ status: "pending" }, {}, { sort: { _id: -1 } });
     if (checkLatest) {
@@ -20,7 +19,6 @@ bot.action('action_one', async (ctx) => {
     await ctx.reply("Thành công : Lên !");
 });
 
-// Define the action for the second button
 bot.action('action_two', async (ctx) => {
     let checkLatest = await transactionModel.findOne({ status: "pending" }, {}, { sort: { _id: -1 } });
     if (checkLatest) {
@@ -30,7 +28,6 @@ bot.action('action_two', async (ctx) => {
     await ctx.reply("Thành công : Xuống !");
 });
 
-// Define the action for the third button
 bot.action('action_three', async (ctx) => {
     let checkLatest = await transactionModel.findOne({ status: "pending" }, {}, { sort: { _id: -1 } });
     if (checkLatest) {
@@ -45,18 +42,11 @@ const { randomUUID } = new ShortUniqueId({ length: 10 });
 
 // --- OPTIMIZATION & FIXES START HERE ---
 
-// Locks to prevent race conditions. Each function gets its own lock.
 let isCreatingNew = false;
 let isHandlingOld = false;
 let isRemoving = false;
 
-/**
- * This function is now refactored to handle two separate cases to prevent flooding.
- * 1. If a 'pending' transaction exists, it only checks if it's time to update its status.
- * 2. If NO 'pending' transaction exists, it creates a new one.
- */
 async function createNew() {
-    // Use a lock to prevent this function from running multiple times simultaneously
     if (isCreatingNew) {
         return;
     }
@@ -64,14 +54,19 @@ async function createNew() {
 
     try {
         const setting = await settingsModel.findOne();
+        // Exit if settings are not configured
+        if (!setting) {
+            console.error("Settings not found. Halting transaction creation.");
+            isCreatingNew = false; // Release lock
+            return;
+        }
+        
         const pendingTransaction = await transactionModel.findOne({ status: "pending" });
 
         if (pendingTransaction) {
-            // SCENARIO 1: A pending transaction exists. We only check if it's time to update it.
+            // SCENARIO 1: A pending transaction exists. Check if it's time to process it.
             const dateNow = moment();
             if (moment(pendingTransaction.dateStart).isBefore(dateNow)) {
-                // The time has come to provide the result. Update status and exit.
-                // The next run of the cron will see no pending transaction and create a new one.
                 await transactionModel.findOneAndUpdate({
                     _id: pendingTransaction._id
                 }, {
@@ -80,24 +75,45 @@ async function createNew() {
                 });
             }
         } else {
-            // SCENARIO 2: No pending transaction found. We create a new one.
+            // SCENARIO 2: No pending transaction. Create the next one in the sequence.
+            const lastTransaction = await transactionModel.findOne({}, {}, { sort: { _id: -1 } });
+            
+            let newDateStart;
+            const timePerRound = setting.timePerRound || 30;
+            const timeAdd = setting.timeAdd || 0;
+
+            if (lastTransaction) {
+                // Base the next start time on the previous transaction's start time.
+                newDateStart = moment(lastTransaction.dateStart).add(timePerRound, 'seconds');
+            } else {
+                // First ever run. Schedule the first transaction to start safely in the future.
+                // This avoids the startOf('minute') bug entirely.
+                newDateStart = moment().add(timeAdd, 'seconds'); // Start in 5 seconds
+            }
+            
+            // CATCH-UP: If server was off, the calculated start time might be in the past.
+            // If so, reschedule it to start safely in the future to prevent an instant loop.
+            if (newDateStart.isBefore(moment())) {
+                 newDateStart = moment().add(timeAdd, 'seconds');
+            }
+
+            // We use the original logic for dateEnd relative to the NEW dateStart
+            const newDateEnd = newDateStart.clone().add(timePerRound, 'seconds');
+            
             const shortId = randomUUID();
             const randomResult = ["up", "down", "sideway"][Math.floor(Math.random() * 3)];
 
-            // NOTE: This timing logic is preserved from your original code.
-            const dateStart = moment().startOf('minute').add((setting?.timePerRound || 30) + (setting?.timeAdd || 0), "seconds");
-            const dateEnd = moment().startOf('minute').add(((setting?.timePerRound || 30) * 2) + (setting?.timeAdd || 0), "seconds");
-
             const create = await transactionModel.create({
                 shortId,
-                result: (setting?.auto) ? randomResult : "",
-                auto: setting?.auto,
+                result: (setting.auto) ? randomResult : "",
+                auto: setting.auto,
                 status: "pending",
-                dateStart: dateStart,
-                dateEnd: dateEnd,
+                // Use the new, safely calculated start and end times
+                dateStart: newDateStart.toDate(),
+                dateEnd: newDateEnd.toDate(),
             });
 
-            if (create && !setting?.auto) {
+            if (create && !setting.auto) {
                 try {
                     await bot.telegram.sendMessage(
                         GROUP_ID,
@@ -116,7 +132,6 @@ async function createNew() {
     } catch (error) {
         console.error("Error in createNew:", error);
     } finally {
-        // IMPORTANT: Always release the lock when the function is done.
         isCreatingNew = false;
     }
 }
@@ -167,7 +182,6 @@ async function handleRemove() {
 }
 
 async function cronAuto() {
-    // The intervals are still aggressive, but the locks will prevent any flooding.
     setInterval(createNew, 500);
     setInterval(handleOldTransaction, 1000);
     setInterval(handleRemove, 100000);
