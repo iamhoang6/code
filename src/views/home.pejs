@@ -79,14 +79,12 @@
   <a href="https://zalo.me/0947751292" 
      class="flex items-center justify-center gap-3 bg-[#36FBFF] py-4 px-10 w-64 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:shadow-lg" 
      style="animation: pulse 2s infinite;">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" class="w-6 h-6">
      Liên hệ Zalo
   </a>
 
   <a href="https://t.me/ZENTRADER9999" 
      class="flex items-center justify-center gap-3 bg-[#36FBFF] py-4 px-10 w-64 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:shadow-lg" 
      style="animation: pulse 2s infinite;">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Telegram_2019_simple_logo.svg/640px-Telegram_2019_simple_logo.svg.png" alt="Telegram" class="w-5 h-5 md:w-6 md:h-6">
      Liên hệ Telegram
   </a>
 </div>
