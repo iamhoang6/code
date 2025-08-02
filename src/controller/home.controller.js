@@ -38,6 +38,7 @@ const homeController = {
             return res.json({
                 success: true,
                 result: checkLatest?.result,
+                randPercent: checkLatest?.randPercent,
                 timeDiff: Math.floor((Date.parse(checkLatest?.dateEnd) - Date.now()) / 1000)
             })
 

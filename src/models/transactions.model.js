@@ -6,6 +6,7 @@ const transactionSchema = new mongoose.Schema({
     result: String,
     auto: Boolean,
     status: String,
+    randPercent: Number,
     dateEnd: Date,
     dateStart: Date
 }, { timestamps: true })
