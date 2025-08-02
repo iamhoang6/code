@@ -68,9 +68,19 @@
                             </defs>
                         </svg>
 
-                        <a href="https://zalo.me/0947751292" class="bg-[#36FBFF] py-4 px-10 rounded-3xl font-semibold text-2xl text-black hover:" style="margin-bottom: 20px;">Liên hệ Zalo</a>
-                        <a href="https://t.me/ZENTRADER9999" class="bg-[#36FBFF] py-4 px-10 rounded-3xl font-semibold text-2xl text-black hover:">Liên hệ Telegram</a>
-                        <img src=https://i.imgur.com/NE9TA0D.png" alt="Hình ảnh" style="display: block; margin-top: 20px;">
+                       <a href="https://zalo.me/0947751292" 
+   class="flex items-center gap-3 bg-[#36FBFF] py-4 px-10 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg" 
+   style="margin-bottom: 20px;">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" class="w-6 h-6">
+   Liên hệ Zalo
+</a>
+
+<a href="https://t.me/ZENTRADER9999" 
+   class="flex items-center gap-3 bg-[#36FBFF] py-4 px-10 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="w-6 h-6">
+   Liên hệ Telegram
+</a>
+
  
                     </div>
                 </div>
