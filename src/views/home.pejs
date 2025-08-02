@@ -55,48 +55,63 @@
                 class="relative m-0 w-screen h-screen"
                 style="background-image: url(/assets/images/background/blue.png); background-position: center; background-size: cover; background-repeat: no-repeat; display: none;"
         >
-            <div class="container mx-auto px-2 md:px-4 h-full">
-                <div class="flex flex-row justify-center items-center relative h-full w-full">
-                    <div class="flex flex-col justify-center items-center">
-                    <p class="liner-gradient-text font-bold md:text-5xl text-3xl text-center" style="background-image: -webkit-linear-gradient(90deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%);">TÀI KHOẢN CẦN GIA HẠN</p>
-                        <hr class="w-2/3 mx-auto my-4 bg-[#FFFFFF] opacity-50">
-                        <p class="mb-3 mt-5 font-semibold text-center text-sm md:text-md liner-gradient-text" style="background-image: -webkit-linear-gradient(90deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%);">Vui lòng liên hệ admin để gia hạn tài khoản</p>
-                            <defs>
-                                <clipPath id="clip0_6_726">
-                                    <rect width="105" height="29" fill="#1FE3E2"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
+           <div class="container mx-auto px-2 md:px-4 h-full">
+  <div class="flex flex-row justify-center items-center relative h-full w-full">
+    <div class="flex flex-col justify-center items-center">
 
-                       <style>
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-</style>
+      <!-- Title -->
+      <p class="liner-gradient-text font-bold md:text-5xl text-3xl text-center mb-2"
+         style="background-image: -webkit-linear-gradient(90deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;">
+        TÀI KHOẢN CẦN GIA HẠN
+      </p>
+      <hr class="w-2/3 mx-auto my-4 bg-white opacity-50 rounded-full">
 
-<div class="flex flex-col gap-4 items-center">
-  <a href="https://zalo.me/0947751292" 
-     class="flex items-center justify-center gap-3 bg-[#36FBFF] py-4 px-10 w-64 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:shadow-lg" 
-     style="animation: pulse 2s infinite;">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" class="w-6 h-6">
-     Liên hệ Zalo
-  </a>
+      <!-- Subtext -->
+      <p class="mb-5 font-semibold text-center text-base md:text-lg liner-gradient-text"
+         style="background-image: -webkit-linear-gradient(90deg, #1FE3E2 0%, #BEFFFF 52.5%, #1FE3E2 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;">
+        Vui lòng liên hệ admin để gia hạn tài khoản
+      </p>
 
-  <a href="https://t.me/ZENTRADER9999" 
-     class="flex items-center justify-center gap-3 bg-[#36FBFF] py-4 px-10 w-64 rounded-3xl font-semibold text-2xl text-black shadow-md transition-transform duration-300 hover:shadow-lg" 
-     style="animation: pulse 2s infinite;">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="w-5 h-5 md:w-6 md:h-6">
-     Liên hệ Telegram
-  </a>
+      <!-- Buttons -->
+      <style>
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+      </style>
+
+      <div class="flex flex-col gap-4 items-center">
+        <!-- Zalo Button -->
+        <a href="https://zalo.me/0947751292"
+           class="flex items-center justify-center gap-3 bg-gradient-to-r from-[#36FBFF] to-[#1FE3E2] 
+                  py-4 px-10 w-64 rounded-full font-semibold text-xl md:text-2xl text-black shadow-lg 
+                  hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1"
+           style="animation: pulse 2s infinite;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" 
+               alt="Zalo" class="w-6 h-6 md:w-7 md:h-7">
+          Liên hệ Zalo
+        </a>
+
+        <!-- Telegram Button -->
+        <a href="https://t.me/ZENTRADER9999"
+           class="flex items-center justify-center gap-3 bg-gradient-to-r from-[#36FBFF] to-[#1FE3E2] 
+                  py-4 px-10 w-64 rounded-full font-semibold text-xl md:text-2xl text-black shadow-lg 
+                  hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1"
+           style="animation: pulse 2s infinite;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
+               alt="Telegram" class="w-6 h-6 md:w-7 md:h-7">
+          Liên hệ Telegram
+        </a>
+      </div>
+
+    </div>
+  </div>
 </div>
 
-
- 
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div
                 id="loadingScreen"
