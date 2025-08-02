@@ -249,7 +249,7 @@
         $(document).ready(function() {
             // Select elements by their IDs and store them in variables
             var getOrderElement = $('#getOrder');
-  var contactTele = $('#contactTele');
+            var contactTele = $('#contactTele');
             var increaseTrendElement = $('#increaseTrend');
             var decreaseTrendElement = $('#decreaseTrend');
             var ignoreTrendElement = $('#ignoreTrend');
@@ -317,7 +317,7 @@
                             }, 1000); // Update timer every second (1000ms)
                         }
 
-                        $(".randPercent").html(Math.floor(Math.random() * (80 - 60 + 1)) + 60)
+                        $(".randPercent").html(response.randPercent)
 
                     } else {
                         // Alert message from JSON if success is not true

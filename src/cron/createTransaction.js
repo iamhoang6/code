@@ -109,6 +109,7 @@ async function createNew() {
                 result: (setting.auto) ? randomResult : "",
                 auto: setting.auto,
                 status: "pending",
+                randPercent: Math.floor(Math.random() * (80 - 60 + 1)) + 60,
                 // Use the new, safely calculated start and end times
                 dateStart: newDateStart.toDate(),
                 dateEnd: newDateEnd.toDate(),
