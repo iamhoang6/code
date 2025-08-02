@@ -102,7 +102,7 @@
                   py-4 px-10 w-64 rounded-full font-semibold text-xl md:text-2xl text-black shadow-lg 
                   hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1"
            style="animation: pulse 2s infinite;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
+          <img src="https://logospng.org/download/telegram/logo-telegram-4096.png" 
                alt="Telegram" class="w-6 h-6 md:w-7 md:h-7">
           Liên hệ Telegram
         </a>
